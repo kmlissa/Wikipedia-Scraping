@@ -33,6 +33,8 @@ name_list = []
 state_list = []
 other_name = []
 other_name2 = []
+
+#get name/aliases and state from csv file
 with open('uniqueName.csv', encoding="utf8") as file:
 	reader = csv.reader(file, delimiter=",")
 	count = 0
@@ -56,7 +58,8 @@ with open('uniqueName.csv', encoding="utf8") as file:
 			state_list.append(f'{row[2]}')
 			count += 1
 		"""
-
+		
+#search wiki title for pic source
 def wikiSearch(name, state, other, other2):
 	listName = name.split(' ')
 	wikipedia = MediaWiki()
@@ -77,7 +80,7 @@ def wikiSearch(name, state, other, other2):
 					return None	
 			 
 		
-
+#get wiki title based on name
 def wikiS(name, searchName, state):
 	name[0] = name[0].lower().replace(",", "")
 	name[1] = name[1].lower().replace(",", "")
@@ -97,7 +100,7 @@ def wikiS(name, searchName, state):
 	#data = json.loads(wikiSR)
 	
 
-
+#insert picture into folders based on state
 for name, state, other, other2 in zip(name_list, state_list, other_name, other_name2):
 	
 	path = r'.\wiki3\{0}'.format(state)
